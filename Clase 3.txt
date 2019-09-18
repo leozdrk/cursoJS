@@ -1,0 +1,41 @@
+git clone https://github.com/leozdrk/CursoJS
+
+git status
+git add .
+git commit -m 'un comentario'
+git push
+
+----------------
+scope global, es todo lo que esta en el script por fuera de una funcion
+scope local, es lo que esta dentro de la funcion
+
+HTML 
+En head esta la meta data, no es visible (salvo el tittle).
+	1. js
+	2. css
+
+comentario en html
+<!-- asdasdasd --> o ctrl + C en el editor
+
+
+
+
+
+console.log(variable);
+
+en el js 
+window.addEventListener('load', InicializarManejadores)
+var boton;
+
+//cuando esta load, ya renderizo el html
+
+function InicializarManejadores()
+{
+	boton = ducument.getElementByID('unboton');
+}
+
+
+----------------
+
+var x; es una variable para todo el scope
+let x; es solo visible dentro del mismo scope y muere (se usa por ejemplo en un for(let x=0;x<5;x++) Esa variable x muere con el for
