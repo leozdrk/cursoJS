@@ -1,0 +1,33 @@
+function saludar(mensaje)
+{
+  alert (mensaje);
+}
+
+saludar("Hola que Tal");
+
+//Invoca la funcion
+(function saludar(mensaje)
+{
+  alert (mensaje);
+})();
+
+let x = saludar;
+
+x("Hola que tal")
+
+
+let perro = {
+  nombre : "Bob",
+  edad  : 3,
+  ladrar(){
+    alert("Guau");
+  }
+};
+
+let perro = {
+  nombre : "Bob",
+  edad  : 3,
+  ladrar : ()=>{
+    alert("Guau");
+  }
+};
