@@ -1,5 +1,6 @@
 let listaPersona = [];
-
+// Es lo mismo definir un array como 1 o 3
+// let listaPersona = new Array();
 
 
 window.addEventListener('load',function(){
@@ -11,8 +12,9 @@ window.addEventListener('load',function(){
 
   //traigo el formulario que quiero - opcion 3
   var frm = this.document.forms[0];
-
+  var boton = this.document.getElementById("MostrarListado");
   frm.addEventListener('submit',ManejarSubmit);
+  boton.addEventListener("click",MostrarListado);
 });
 
 function Persona(nombre,apellido,edad,genero,maneja,nada,bicicleta,pais)
@@ -40,20 +42,30 @@ function Presentarse()
 function Hobbies()
 {
   var texto = "Mis Hobbies son: ";
-  var actividades = 0;
   if(this.maneja)
   {
-    texto += "Manejar automoviles, ";    
+    texto += "Manejar automoviles, ";
   }
   if(this.nada)
   {
-    texto += "Nadar en la pileta, ";    
+    texto += "Nadar en la pileta, ";
   }
   if(this.bicicleta)
   {
-    texto += "Dar paseos en bicicleta.";    
+    texto += "Dar paseos en bicicleta.";
   }
   console.log(texto);
+}
+
+function MostrarListado()
+{
+  for (const persona of listaPersona) {
+    console.log(persona.Presentarse());
+  }
+  let nroPersona = parseInt(document.getElementById("nroPersona").value);
+  document.getElementById('txtNombre2').value=listaPersona[nroPersona].nombre;
+  document.getElementById('txtApellido2').value=listaPersona[nroPersona].apellido;
+  document.getElementById('txtEdad2').value=listaPersona[nroPersona].edad;
 }
 
 function ManejarSubmit(e)
@@ -64,7 +76,7 @@ function ManejarSubmit(e)
   var nombre = document.getElementById('txtNombre').value;
   var apellido = document.getElementById('txtApellido').value;
   var edad = parseInt(document.getElementById('txtEdad').value);
-  
+
   var genero = document.getElementById('rdoMasculino').checked;
   if(genero)
     genero = "Masculino";
@@ -74,14 +86,27 @@ function ManejarSubmit(e)
   var maneja = document.getElementById('chkManeja').checked;
   var nada = document.getElementById('chkNadar').checked;
   var bicicleta = document.getElementById('chkBici').checked;
-  
+
   var pais = document.getElementById('selPais').value;
-  
+
   //Crear Persona
   var nuevaPersona = new Persona(nombre,apellido,edad,genero,maneja,nada,bicicleta,pais);
-  listaPersona.push(nuevaPersona);
 
   //Lo agrego a la lista
+  listaPersona.push(nuevaPersona);
+
+  //Limpio el formulario
+  LimpiarForm();
 }
 
-
+function LimpiarForm()
+{
+  document.getElementById('txtNombre').value = "";
+  document.getElementById('txtApellido').value = "";
+  document.getElementById('txtEdad').value = "";
+  document.getElementById('rdoMasculino').checked = false;
+  document.getElementById('chkManeja').checked = false;
+  document.getElementById('chkNadar').checked = false;
+  document.getElementById('chkBici').checked = false;
+  document.getElementById('selPais').value = "ar";
+}
